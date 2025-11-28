@@ -1,0 +1,209 @@
+/* =========================================
+   VARIAVEIS E CONFIGURAÇÕES GERAIS
+   ========================================= */
+:root {
+  --primary-color: #212529; /* Preto/Cinza Escuro (Hardware) */
+  --accent-color: #0d6efd; /* Azul Tech (Intel/Win Blue) */
+  --bg-color: #f4f6f9; /* Fundo cinza gelo muito suave */
+  --card-bg: #ffffff;
+  --text-main: #2c3e50;
+  --text-muted: #6c757d;
+  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* =========================================
+   NAVBAR (Identidade TechClick)
+   ========================================= */
+.navbar {
+  /* Gradiente sutil na borda inferior para dar um toque "Gamer/RGB" discreto */
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, #0d6efd, #00f2ff) 1;
+  padding: 12px 0;
+  background-color: #1a1a1a !important; /* Força o escuro */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff !important;
+}
+
+.nav-link {
+  font-size: 1.05rem;
+  margin: 0 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85) !important;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Pequeno traço abaixo do link ao passar o mouse */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: var(--shadow-hover);
+  border-top: 3px solid var(--accent-color);
+}
+
+/* =========================================
+   ÁREA DE CONTEÚDO (Cards)
+   ========================================= */
+.content-area {
+  min-height: 80vh;
+  background: var(--card-bg);
+  border-radius: 16px; /* Cantos mais arredondados */
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 40px;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Títulos */
+.page-title,
+h1 {
+  font-size: 2rem;
+  font-weight: 800; /* Mais grosso */
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  border-left: 5px solid var(--accent-color); /* Detalhe lateral */
+  padding-left: 15px;
+}
+
+/* =========================================
+   TABELAS (Listagem de Peças)
+   ========================================= */
+.table-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.table {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.table thead th {
+  background-color: var(--primary-color); /* Cabeçalho escuro tech */
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  border: none;
+  padding: 15px;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.table tbody tr:hover {
+  background-color: #eef5ff; /* Azul bem claro ao passar o mouse */
+}
+
+/* =========================================
+   BOTÕES (Ações)
+   ========================================= */
+.btn-edit,
+.btn-delete {
+  border: none;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-edit {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+}
+
+.btn-edit:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.btn-delete {
+  background-color: #ffeaea;
+  color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #dc3545;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+@media (max-width: 768px) {
+  .content-area {
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .table thead {
+    display: none; /* Em mobile, as vezes é melhor ocultar header ou adaptar */
+  }
+
+  /* Adaptação simples para tabelas em mobile (opcional) */
+  .table tbody td {
+    display: block;
+    text-align: right;
+    border-bottom: none;
+  }
+  .table tbody td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}
